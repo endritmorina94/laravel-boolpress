@@ -17,10 +17,14 @@ use App\Post;
 
 Auth::routes();
 
+//Homepage
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/blog', 'PostController@index');
+//Gestione della visualizzazione pubblica dei post
+Route::get('/blog', 'PostController@index')->name('blog');
+Route::get('/blog/{slug}', 'PostController@show')->name('blog-post');
 
+//Admin routes
 Route::prefix('admin')
     ->namespace('Admin')
     ->name('admin.')

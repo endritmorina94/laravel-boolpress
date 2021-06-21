@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title', "Modifica un post")
+
 @section('content')
     <h1>Modifica un post</h1>
 

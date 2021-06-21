@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title', "Crea un nuovo post")
+
 @section('content')
     <h1>Crea un nuovo post</h1>
 

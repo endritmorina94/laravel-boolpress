@@ -5,6 +5,9 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Post;
 
+//Specifichiamo l'uso della funzione Str per creare lo slug
+use Illuminate\Support\Str;
+
 class PostsTableSeeder extends Seeder
 {
     /**

@@ -13,7 +13,7 @@
                     'slug' => $post->slug
                     ]) }}">DETTAGLI</a>
             </div>
-
         @endforeach
+        
     </div>
 @endsection

@@ -16,5 +16,12 @@
             'post' => $post->id
             ]) }}">MODIFICA
         </a>
+
+        {{-- Delete Element Form --}}
+        <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="submit" class="btn btn-danger" value="Elimina">
+        </form>
     @endforeach
 @endsection

@@ -32,17 +32,25 @@
                     <ul class="navbar-nav mr-auto">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                                <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active' : '' }}"
+                                    href="{{ route('home') }}">{{ __('Home') }}
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('blog') }}">{{ __('Blog') }}</a>
+                                <a class="nav-link {{ Request::route()->getName() == 'blog' ? 'active' : '' }}" 
+                                    href="{{ route('blog') }}">{{ __('Blog') }}
+                                </a>
                             </li>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link {{ Request::route()->getName() == 'admin.home' ? 'active' : '' }}"
+                                href="{{ route('admin.home') }}">{{ __('Home') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('BlogAdmin') }}</a>
+                            <a class="nav-link {{ Request::route()->getName() == 'admin.posts.index' ? 'active' : '' }}"
+                                href="{{ route('admin.posts.index') }}">{{ __('BlogAdmin') }}
+                            </a>
                         </li>
                         @endguest
 
@@ -62,7 +70,9 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.posts.create') }}">{{ __('Crea un nuovo post') }}</a>
+                                <a class="nav-link {{ Request::route()->getName() == 'admin.posts.create' ? 'active' : '' }}"
+                                    href="{{ route('admin.posts.create') }}">{{ __('Crea un nuovo post') }}
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -6,4 +6,9 @@
     <div class="">SLUG: {{ $post->slug }}</div>
 
     <p>{{ $post->content }}</p>
+
+    <a class="btn btn-success" href="{{ route('admin.posts.edit',[
+        'post' => $post->id
+        ]) }}">MODIFICA
+    </a>
 @endsection

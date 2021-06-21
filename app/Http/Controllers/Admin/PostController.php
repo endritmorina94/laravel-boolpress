@@ -109,7 +109,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $data = [
+            'post' => $post
+        ];
+
+        return view('admin.posts.edit', $data);
     }
 
     /**
@@ -121,7 +127,46 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Valido i dati
+        $request->validate([
+           'title' => 'required|min:3|max:255',
+           'content' => 'required|max:65000'
+        ]);
+
+        //Inserisco tutti i dati nella variabile form_data
+        $form_data = $request->all();
+
+        //Indico con una variabile il post da modificare
+        $post_to_modify = Post::find($id);
+
+        //Come default imposto lo slug del post nel DB all post modificato
+        $form_data['slug'] = $post_to_modify->slug;
+
+        //Creo lo slug controllando che non ne esista già uno uguale
+        //Controllo quindi se il titolo del post modificato è stato modificato
+        if($form_data['title'] != $post_to_modify->title){
+            //Nel caso il titolo venga modificato....
+            //Creiamo uno slug controllando che non ce ne sia già uno uguale nel DB
+            $new_slug = Str::slug($form_data['title'], '-');
+            $slug_base = $new_slug;
+            $existing_slug = Post::where('slug', '=', $new_slug)->first();
+            $counter = 2;
+
+            while ($existing_slug) {
+                $new_slug = $slug_base . '-' . $counter;
+                $counter++;
+                $existing_slug = Post::where('slug', '=', $new_slug)->first();
+            }
+
+            //Riassegno lo slug
+            $form_data['slug'] = $new_slug;
+        }
+
+        //Con la funzione update() aggiorno tutti i dati, la funzione update() funziona come la funzione fill()
+        $post_to_modify->update($form_data);
+
+        //Reindirizzo l'utente alla pagina del fumetto appena aggiornato/modificato
+        return redirect()->route('admin.posts.show', ['post' => $post_to_modify->id]);
     }
 
     /**

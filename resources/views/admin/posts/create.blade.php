@@ -21,11 +21,12 @@
 
         <div class="form-group">
             <label for="title">Titolo</label>
-            <input type="text" class="form-control" id="title" name="title">
+            {{-- La funzione old() autocompilerà l'input nel caso la richiesta non vada subito a buon fine --}}
+            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
         </div>
         <div class="form-group">
             <label for="content">Contenuto</label>
-            <textarea class="form-control" id="content" name="content" rows="8" cols="80"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="8" cols="80">{{ old('content') }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Crea</button>

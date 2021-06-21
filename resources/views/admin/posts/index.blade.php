@@ -9,6 +9,12 @@
 
         <a class="btn btn-primary" href="{{ route('admin.posts.show',[
             'post' => $post->id
-            ]) }}">DETTAGLI</a>
+            ]) }}">DETTAGLI
+        </a>
+
+        <a class="btn btn-success" href="{{ route('admin.posts.edit',[
+            'post' => $post->id
+            ]) }}">MODIFICA
+        </a>
     @endforeach
 @endsection

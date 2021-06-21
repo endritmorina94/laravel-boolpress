@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+//Specifichiamo l'uso del Model Post
 use App\Post;
+//Specifichiamo l'uso della funzione Str per creare lo slug
+use Illuminate\Support\Str;
 
 
 class PostController extends Controller
@@ -32,7 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -43,7 +46,42 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Valido i dati
+        $request->validate([
+           'title' => 'required|min:3|max:255',
+           'content' => 'required|max:65000'
+        ]);
+
+        //Una volta validati li valorizziamo in una variabile
+        $form_data = $request->all();
+
+        //Dichiariamo una nuova istanza Post
+        $post = new Post();
+
+        //Creiamo uno slug controllando che non ce ne sia già uno uguale nel DB
+        $new_slug = Str::slug($form_data['title'], '-');
+        $slug_base = $new_slug;
+        $existing_slug = Post::where('slug', '=', $new_slug)->first();
+        $counter = 2;
+
+        while ($existing_slug) {
+            $new_slug = $slug_base . '-' . $counter;
+            $counter++;
+            $existing_slug = Post::where('slug', '=', $new_slug)->first();
+        }
+
+        $form_data['slug'] = $new_slug;
+
+        //Con la funzione fill passiamo i dati della variabile form_data al nostro nuovo oggetto Post
+        //ATTENZIONE: ricordati di specificare nel Model quali sono i dati che possono essere "fillati"
+        $post->fill($form_data);
+        //Con la funzione save() salviamo
+        $post->save();
+
+        //Reindirizziamo l'utente al nuovo fumetto appena inserito nel DB
+        return redirect()->route('admin.posts.show', [
+           'post' => $post->id
+        ]);
     }
 
     /**
@@ -54,7 +92,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $data = [
+            'post' => $post
+        ];
+
+        return view('admin.posts.show', $data);
     }
 
     /**

@@ -121,8 +121,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $categories = Category::all();
+
         $data = [
-            'post' => $post
+            'post' => $post,
+            'categories' =>$categories
         ];
 
         return view('admin.posts.edit', $data);
@@ -140,7 +143,8 @@ class PostController extends Controller
         //Valido i dati
         $request->validate([
            'title' => 'required|min:3|max:255',
-           'content' => 'required|max:65000'
+           'content' => 'required|max:65000',
+           'category_id' => 'exists:categories,id'
         ]);
 
         //Inserisco tutti i dati nella variabile form_data

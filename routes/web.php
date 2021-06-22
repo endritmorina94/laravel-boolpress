@@ -20,6 +20,9 @@ Auth::routes();
 //Homepage
 Route::get('/', 'HomeController@index')->name('home');
 
+//Category page
+Route::get('category/{slug}', 'CategoryController@show')->name('category-page');
+
 //Gestione della visualizzazione pubblica dei post
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/blog/{slug}', 'PostController@show')->name('blog-post');
@@ -31,6 +34,7 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
+        Route::get('category/{slug}', 'CategoryController@show')->name('category-page');
 
         Route::resource('/posts', 'PostController');
 });

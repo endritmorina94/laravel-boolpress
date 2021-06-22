@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Post;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -25,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('guest.home');
+        $categories = Category::all();
+
+        $data = [
+            'categories' =>$categories
+        ];
+
+        return view('guest.home', $data);
     }
 }

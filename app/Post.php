@@ -12,4 +12,10 @@ class Post extends Model
        'content',
        'slug'
     ];
+
+    //RELAZIONE TRA TABELLE (ONE TO MANY in questo caso)
+    //Ogni post ha solo una categoria
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }

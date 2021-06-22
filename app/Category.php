@@ -11,4 +11,10 @@ class Category extends Model
        'name',
        'slug'
     ];
+
+    //RELAZIONE TRA TABELLE (ONE TO MANY in questo caso)
+    //Ognicategoria può avere più post correlati
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }

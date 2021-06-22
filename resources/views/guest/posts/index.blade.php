@@ -7,7 +7,8 @@
 
     @foreach ($posts as $post)
         <div class="">
-            <h2>{{ $post->title }}</h2>
+            <h2>{{ $post->title }}</h2>ì
+            
             <p>{{ $post->content }}</p>
 
             <a class="btn btn-primary" href="{{ route('blog-post', [

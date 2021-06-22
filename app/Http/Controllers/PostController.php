@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 
 class PostController extends Controller
@@ -11,6 +12,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+
 
         $data = [
             'posts' => $posts
@@ -28,7 +30,8 @@ class PostController extends Controller
         }
 
         $data = [
-            'post' => $post
+            'post' => $post,
+            'category' =>$post->category
         ];
 
         return view('guest.posts.show', $data);

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//Specifichiamo l'uso del Model Post
+//Specifichiamo l'uso del model Post e del model Category
 use App\Post;
+use App\Category;
 //Specifichiamo l'uso della funzione Str per creare lo slug
 use Illuminate\Support\Str;
 
@@ -35,7 +36,13 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        $data = [
+            'categories' => $categories
+        ];
+
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -49,7 +56,9 @@ class PostController extends Controller
         //Valido i dati
         $request->validate([
            'title' => 'required|min:3|max:255',
-           'content' => 'required|max:65000'
+           'content' => 'required|max:65000',
+           //category_id deve esistere nella tabella categories, nella collona id
+           'category_id' => 'exists:categories,id'
         ]);
 
         //Una volta validati li valorizziamo in una variabile
@@ -95,7 +104,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $data = [
-            'post' => $post
+            'post' => $post,
+            'category' => $post->category
         ];
 
         return view('admin.posts.show', $data);
@@ -182,6 +192,6 @@ class PostController extends Controller
         $post_to_delete->delete();
 
         //Faccio tornare l'utente alla Homepage
-        return redirect()->route('admin.posts.index');    
+        return redirect()->route('admin.posts.index');
     }
 }

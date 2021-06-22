@@ -13,7 +13,7 @@ class Category extends Model
     ];
 
     //RELAZIONE TRA TABELLE (ONE TO MANY in questo caso)
-    //Ognicategoria può avere più post correlati
+    //Ogni categoria può avere più post correlati
     public function posts(){
         return $this->hasMany('App\Post');
     }

@@ -20,12 +20,12 @@ class PostsTableSeeder extends Seeder
      public function run(Faker $faker)
      {
         for ($i = 0; $i < 10; $i++){
-        $newPost = new Post();
-        $newPost->title = $faker->words(4, true);
-        $newPost->content = $faker->paragraphs(4, true);
-        //Questa funzione formatterà in automatico il title renendolo uno slug
-        $newPost->slug = Str::slug($newPost->title, '-');
-        $newPost->save();
+            $newPost = new Post();
+            $newPost->title = $faker->words(4, true);
+            $newPost->content = $faker->paragraphs(4, true);
+            //Questa funzione formatterà in automatico il title renendolo uno slug
+            $newPost->slug = Str::slug($newPost->title, '-');
+            $newPost->save();
         }
      }
 }

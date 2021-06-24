@@ -88,9 +88,9 @@ class PostController extends Controller
         //Con la funzione save() salviamo
         $post->save();
 
-        // if(isset($form_data['tags']) && is_array($form_data['tags'])){
-        //     $post->tags()->attach($form_data['tags']);
-        // }
+        if(isset($form_data['tags']) && is_array($form_data['tags'])){
+            $post->tags()->attach($form_data['tags']);
+        }
 
         //Reindirizziamo l'utente al nuovo fumetto appena inserito nel DB
         return redirect()->route('admin.posts.show', [

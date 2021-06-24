@@ -13,11 +13,14 @@
         </div>
     @endif
 
-    @foreach ($tags as $tag)
-        <div class="">
-            Tags: {{ $tag->name }}
-        </div>
-    @endforeach
+    <div class="">
+        Tags:
+        @foreach ($tags as $tag)
+            {{ $tag->name }}{{ $loop->last ? '' : ',' }}
+        @endforeach
+    </div>
+
+
 
     <p>{{ $post->content }}</p>
 

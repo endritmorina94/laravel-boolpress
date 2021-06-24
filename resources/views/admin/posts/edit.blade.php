@@ -43,6 +43,30 @@
             <textarea class="form-control" id="content" name="content" rows="8" cols="80">{{ old('content', $post->content) }}</textarea>
         </div>
 
+        <div class="form-group">
+            @foreach ($tags as $tag)
+                <div class="form-check-inline">
+                    {{-- Se ci sono stati errori durante la compilazione, verranno mostrate come checked le input indicateci da old --}}
+                    @if ($errors->any())
+                        <input class="form-check-input" name="tags[]"
+                                type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}"
+                                {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}
+                        >
+                    {{-- Altrimenti, quelle che sono attualmente appartenenti al post--}}
+                    @else
+                        <input class="form-check-input" name="tags[]"
+                                type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}"
+                                {{ $post->tags->contains($tag->id) ? 'checked' : '' }}
+                        >
+                    @endif
+
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
+
         <button type="submit" class="btn btn-primary">Salva</button>
     </form>
     {{-- End Edit form --}}

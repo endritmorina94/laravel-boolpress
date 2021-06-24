@@ -88,6 +88,8 @@ class PostController extends Controller
         //Con la funzione save() salviamo
         $post->save();
 
+        //Controllo che l'array 'tags' ci sia e che sia effetivamente un array,
+        //Se così, lo setto come tag o più tag al nuovo post
         if(isset($form_data['tags']) && is_array($form_data['tags'])){
             $post->tags()->attach($form_data['tags']);
         }
@@ -107,8 +109,6 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-
-        // dd($post->tags);
 
         $data = [
             'post' => $post,
@@ -131,9 +131,12 @@ class PostController extends Controller
 
         $categories = Category::all();
 
+        $tags = Tag::all();
+
         $data = [
             'post' => $post,
-            'categories' =>$categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('admin.posts.edit', $data);
@@ -183,6 +186,15 @@ class PostController extends Controller
         //Con la funzione update() aggiorno tutti i dati, la funzione update() funziona come la funzione fill()
         $post_to_modify->update($form_data);
 
+
+        //Controllo che l'array 'tags' ci sia e che sia effetivamente un array,
+        //Se così, lo setto come tag o più tag al nuovo post. Altrimenti tolgo tutti i tag.
+        if(isset($form_data['tags']) && is_array($form_data['tags'])){
+            $post_to_modify->tags()->sync($form_data['tags']);
+        } else {
+            $post_to_modify->tags()->sync([]);
+        }
+
         //Reindirizzo l'utente alla pagina del fumetto appena aggiornato/modificato
         return redirect()->route('admin.posts.show', ['post' => $post_to_modify->id]);
     }
@@ -211,7 +223,7 @@ class PostController extends Controller
             //category_id deve esistere nella tabella categories, nella collona id
             'category_id' => 'nullable|exists:categories,id',
             //tags devono esistere nella tabella tags, nella colonna id
-            'tags' => 'nullable|exists:tags, id'
+            'tags' => 'nullable|exists:tags,id'
         ];
     }
 }

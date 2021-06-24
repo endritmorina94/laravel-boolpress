@@ -21,11 +21,14 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 //Category page
-Route::get('category/{slug}', 'CategoryController@show')->name('category-page');
+Route::get('/category/{slug}', 'CategoryController@show')->name('category-page');
 
 //Gestione della visualizzazione pubblica dei post
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/blog/{slug}', 'PostController@show')->name('blog-post');
+
+//Gestione delle pagine tag
+Route::get('/tag/{slug}', 'TagController@show')->name('tag-page');
 
 //Admin routes
 Route::prefix('admin')
@@ -34,7 +37,7 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
-        Route::get('category/{slug}', 'CategoryController@show')->name('category-page');
+        Route::get('/category/{slug}', 'CategoryController@show')->name('category-page');
 
         Route::resource('/posts', 'PostController');
 });

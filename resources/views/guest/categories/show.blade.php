@@ -7,7 +7,11 @@
 
     @foreach ($posts as $post)
         <div class="mt-4">
-            <h2>{{ $post->title }}</h2>
+            <a href="{{ route('blog-post', [
+                'slug' => $post->slug
+                ]) }}">
+                <h2>{{ $post->title }}</h2>
+            </a>
 
             <p>{{ $post->content }}</p>
         </div>

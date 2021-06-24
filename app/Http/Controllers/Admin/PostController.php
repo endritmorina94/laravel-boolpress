@@ -209,6 +209,10 @@ class PostController extends Controller
     {
         $post_to_delete = Post::findOrFail($id);
 
+        //Prima di eliminare il post, cancello le sue tag per evitare di avere collegamenti orfani
+        //Nella tabella bridge post_tag
+        $post_to_delete->tags()->sync([]);
+
         $post_to_delete->delete();
 
         //Faccio tornare l'utente alla Homepage

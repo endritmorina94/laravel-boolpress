@@ -7,7 +7,7 @@
 
     <h2>Scegli i post per categoria</h2>
 
-    <div class="mt-5">
+    <div class="mt-3">
         @foreach ($categories as $category)
             <a href="{{ route('category-page', ['slug' => $category->slug])}}">
                 <h3>{{ $category->name }}</h3>

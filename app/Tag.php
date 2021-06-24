@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+    protected $fillable = [
+       'name',
+       'slug'
+    ];
+    
     //RELAZIONE TRA TABELLE (MANY TO MANY in questo caso)
     //Ogni tag può avere più post
     public function posts(){

@@ -13,6 +13,12 @@
         </div>
     @endif
 
+    @foreach ($tags as $tag)
+        <div class="">
+            Tags: {{ $tag->name }}
+        </div>
+    @endforeach
+
     <p>{{ $post->content }}</p>
 
     <a class="btn btn-success" href="{{ route('admin.posts.edit',[

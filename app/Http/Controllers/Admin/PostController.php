@@ -58,15 +58,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //Valido i dati
-        $request->validate([
-           'title' => 'required|min:3|max:255',
-           'content' => 'required|max:65000',
-           //category_id deve esistere nella tabella categories, nella collona id
-           'category_id' => 'exists:categories,id'
-        ]);
+        $request->validate($this->getValidationRules());
 
         //Una volta validati li valorizziamo in una variabile
         $form_data = $request->all();
+
+        // dd($form_data);
 
         //Dichiariamo una nuova istanza Post
         $post = new Post();
@@ -91,6 +88,10 @@ class PostController extends Controller
         //Con la funzione save() salviamo
         $post->save();
 
+        // if(isset($form_data['tags']) && is_array($form_data['tags'])){
+        //     $post->tags()->attach($form_data['tags']);
+        // }
+
         //Reindirizziamo l'utente al nuovo fumetto appena inserito nel DB
         return redirect()->route('admin.posts.show', [
            'post' => $post->id
@@ -107,9 +108,12 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        // dd($post->tags);
+
         $data = [
             'post' => $post,
-            'category' => $post->category
+            'category' => $post->category,
+            'tags' =>$post->tags
         ];
 
         return view('admin.posts.show', $data);
@@ -145,11 +149,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //Valido i dati
-        $request->validate([
-           'title' => 'required|min:3|max:255',
-           'content' => 'required|max:65000',
-           'category_id' => 'exists:categories,id'
-        ]);
+        $request->validate($this->getValidationRules());
 
         //Inserisco tutti i dati nella variabile form_data
         $form_data = $request->all();
@@ -201,5 +201,17 @@ class PostController extends Controller
 
         //Faccio tornare l'utente alla Homepage
         return redirect()->route('admin.posts.index');
+    }
+
+    //Funzione di validazione dei dati
+    private function getValidationRules() {
+        return [
+            'title' => 'required|min:3|max:255',
+            'content' => 'required|max:65000',
+            //category_id deve esistere nella tabella categories, nella collona id
+            'category_id' => 'nullable|exists:categories,id',
+            //tags devono esistere nella tabella tags, nella colonna id
+            'tags' => 'nullable|exists:tags, id'
+        ];
     }
 }

@@ -45,7 +45,7 @@
 
         <div class="form-group">
             @foreach ($tags as $tag)
-                <div class="form-check-inline">
+                <div class="form-check">
                     <input class="form-check-input" name="tags[]"
                             type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}"
                             {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>

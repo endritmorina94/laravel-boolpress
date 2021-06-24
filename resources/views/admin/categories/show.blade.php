@@ -7,7 +7,9 @@
 
     @foreach ($posts as $post)
         <div class="mt-4">
-            <h2>{{ $post->title }}</h2>
+            <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}">
+                <h2>{{ $post->title }}</h2>
+            </a>
 
             <p>{{ $post->content }}</p>
 

@@ -9,7 +9,6 @@
         <div class="">
             <h2>{{ $post->title }}</h2>
 
-
             @if ($post->tags->isNotEmpty())
                 <div class="mt-2">
                     <b>TAG: </b>

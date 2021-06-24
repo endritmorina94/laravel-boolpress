@@ -5,22 +5,30 @@
 @section('content')
     <h1>{{ $post->title }}</h1>
 
-    <div class="">SLUG: {{ $post->slug }}</div>
+    <div class="">
+        <b>SLUG: </b>
+        {{ $post->slug }}
+    </div>
 
-    @if ($category)
-        <div class="">
-            Categoria: {{ $category->name }}
+    @if ($tags->isNotEmpty())
+        <div class="mt-2">
+            <b>TAG: </b>
+            @foreach ($post->tags as $tag)
+                <a href="{{ route('tag-page', ['slug' =>$tag->slug])}}">
+                    {{ $tag->name }}{{ $loop->last ? '' : ',' }}
+                </a>
+            @endforeach
         </div>
     @endif
 
-    <div class="">
-        Tags:
-        @foreach ($tags as $tag)
-            {{ $tag->name }}{{ $loop->last ? '' : ',' }}
-        @endforeach
-    </div>
-
-
+    @if ($category)
+        <div class="">
+            <b>Categoria: </b>
+            <a href="{{ route('admin.category-page', ['slug' =>$category->slug])}}">
+                {{$category->name}}
+            </a>
+        </div>
+    @endif
 
     <p>{{ $post->content }}</p>
 

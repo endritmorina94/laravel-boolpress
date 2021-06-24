@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //Specifichiamo l'uso del model Post e del model Category
 use App\Post;
 use App\Category;
+use App\Tag;
 //Specifichiamo l'uso della funzione Str per creare lo slug
 use Illuminate\Support\Str;
 
@@ -38,8 +39,11 @@ class PostController extends Controller
     {
         $categories = Category::all();
 
+        $tags = Tag::all();
+
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('admin.posts.create', $data);

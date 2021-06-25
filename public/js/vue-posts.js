@@ -106,7 +106,6 @@ var app = new Vue({
     axios.get('http://127.0.0.1:8000/api/posts').then(function (response) {
       //Metto nell'array posts tutti i dati che mi risultano dalla chiamata API
       _this.posts = response.data;
-      console.log(_this.posts);
     });
   }
 });

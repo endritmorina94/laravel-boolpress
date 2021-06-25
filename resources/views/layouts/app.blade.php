@@ -43,6 +43,11 @@
                                     href="{{ route('blog') }}">{{ __('Blog') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::route()->getName() == 'vue-posts' ? 'active' : '' }}"
+                                    href="{{ route('vue-posts') }}">{{ __('API Vue') }}
+                                </a>
+                            </li>
                         @else
                         <li class="nav-item">
                             <a class="nav-link {{ Request::route()->getName() == 'admin.home' ? 'active' : '' }}"

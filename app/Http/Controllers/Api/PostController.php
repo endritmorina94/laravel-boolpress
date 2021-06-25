@@ -19,6 +19,7 @@ class PostController extends Controller
         //Tramite ciclo foreach inserisco nell'array vuoto i dati che voglio per ogni post
         foreach ($posts as $post) {
             $posts_result[] = [
+                'id' => $post->id,
                 'title' => $post->title,
                 'content' => $post->content,
                 'category' => $post->category ? $post->category->name : '',

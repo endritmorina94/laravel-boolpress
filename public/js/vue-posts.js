@@ -96,10 +96,19 @@
 var app = new Vue({
   el: '#root',
   data: {
-    title: 'Ciao sono Vue'
+    title: 'Ciao sono Vue',
+    posts: []
   },
   methods: {},
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://127.0.0.1:8000/api/posts').then(function (response) {
+      //Metto nell'array posts tutti i dati che mi risultano dalla chiamata API
+      _this.posts = response.data;
+      console.log(_this.posts);
+    });
+  }
 });
 
 /***/ }),

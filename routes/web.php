@@ -27,6 +27,9 @@ Route::get('/category/{slug}', 'CategoryController@show')->name('category-page')
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/blog/{slug}', 'PostController@show')->name('blog-post');
 
+//Route per la view con Vue
+Route::get('/api-vue', 'PostController@vuePosts')->name('vue-posts');
+
 //Gestione delle pagine tag
 Route::get('/tag/{slug}', 'TagController@show')->name('tag-page');
 

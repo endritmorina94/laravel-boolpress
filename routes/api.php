@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//Creo la route API indicamndone, come sempre, url, controller di riferimento e nome
 Route::get('/posts', 'Api\PostController@index')->name('api-posts');

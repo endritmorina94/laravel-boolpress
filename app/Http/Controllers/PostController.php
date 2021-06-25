@@ -37,4 +37,10 @@ class PostController extends Controller
 
         return view('guest.posts.show', $data);
     }
+
+    //Funzione che tornerà la nostra pagina con Vue, che stamperà i datit tramite chiata API
+    public function vuePosts()
+    {
+        return view('guest.posts.vue-posts');
+    }
 }

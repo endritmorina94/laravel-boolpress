@@ -13,3 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+//Chiedo a npm di includere il file vue-posts.js nel file public.js
+mix.js('resources/js/vue-posts.js', 'public/js');

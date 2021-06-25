@@ -9,6 +9,8 @@
 
     <title>@yield('page_title')</title>
 
+    @yield('header-script')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -103,5 +105,6 @@
             </div>
         </main>
     </div>
+    @yield('footer-script')
 </body>
 </html>

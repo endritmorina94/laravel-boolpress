@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title', 'ciao')
+@section('page_title', $tag->name)
 
 @section('content')
     <h1>TAG: {{ $tag->name }}</h1>

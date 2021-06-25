@@ -10,10 +10,13 @@ class PostController extends Controller
 {
     public function index()
     {
+        //Prendo tutti i post disponibili nel DB
         $posts = Post::all();
 
+        //Creo un array vuoto
         $posts_result = [];
 
+        //Tramite ciclo foreach inserisco nell'array vuoto i dati che voglio per ogni post
         foreach ($posts as $post) {
             $posts_result[] = [
                 'title' => $post->title,
@@ -23,6 +26,7 @@ class PostController extends Controller
             ];
         }
 
+        //Torno la risposta sotto forma di json
         return response()->json($posts_result);
     }
 }

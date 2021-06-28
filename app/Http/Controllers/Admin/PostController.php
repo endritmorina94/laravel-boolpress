@@ -11,7 +11,7 @@ use App\Tag;
 //Specifichiamo l'uso della funzione Str per creare lo slug
 use Illuminate\Support\Str;
 //Specifichiamo l'uso della funzione Storage per inserire file nel DB
- use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -83,6 +83,16 @@ class PostController extends Controller
         }
 
         $form_data['slug'] = $new_slug;
+
+        //Se l'img_path esiste, allora con la funzione storage creo il path all'immagine
+        if(isset($form_data['img_path'])){
+            $img_path = Storage::put('posts-cover', $form_data['img_path']);
+
+            //Se la variabile $img_path viene creata la imposto come valore di $form_data['img_path']
+            if ($img_path) {
+                $form_data['img_path'] = $img_path;
+            }
+        }
 
         //Con la funzione fill passiamo i dati della variabile form_data al nostro nuovo oggetto Post
         //ATTENZIONE: ricordati di specificare nel Model quali sono i dati che possono essere "fillati"
@@ -185,6 +195,16 @@ class PostController extends Controller
             $form_data['slug'] = $new_slug;
         }
 
+        //Se l'img_path esiste, allora con la funzione storage creo il path all'immagine
+        if(isset($form_data['img_path'])){
+            $img_path = Storage::put('posts-cover', $form_data['img_path']);
+
+            //Se la variabile $img_path viene creata la imposto come valore di $form_data['img_path']
+            if ($img_path) {
+                $form_data['img_path'] = $img_path;
+            }
+        }
+
         //Con la funzione update() aggiorno tutti i dati, la funzione update() funziona come la funzione fill()
         $post_to_modify->update($form_data);
 
@@ -229,7 +249,8 @@ class PostController extends Controller
             //category_id deve esistere nella tabella categories, nella collona id
             'category_id' => 'nullable|exists:categories,id',
             //tags devono esistere nella tabella tags, nella colonna id
-            'tags' => 'nullable|exists:tags,id'
+            'tags' => 'nullable|exists:tags,id',
+            'img_path' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,webp'
         ];
     }
 }

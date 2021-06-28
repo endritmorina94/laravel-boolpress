@@ -11,7 +11,8 @@ class Post extends Model
        'title',
        'content',
        'slug',
-       'category_id'
+       'category_id',
+       'img_path'
     ];
 
     //RELAZIONE TRA TABELLE (ONE TO MANY in questo caso)

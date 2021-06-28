@@ -10,6 +10,8 @@ use App\Category;
 use App\Tag;
 //Specifichiamo l'uso della funzione Str per creare lo slug
 use Illuminate\Support\Str;
+//Specifichiamo l'uso della funzione Storage per inserire file nel DB
+ use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller

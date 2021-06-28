@@ -12,7 +12,10 @@ use App\Tag;
 use Illuminate\Support\Str;
 //Specifichiamo l'uso della funzione Storage per inserire file nel DB
 use Illuminate\Support\Facades\Storage;
-
+//Specifichiamo l'uso della classe Mail
+use Illuminate\Support\Facades\Mail;
+//Specifichiamo l'uso della mail che abbiamo creato
+use App\Mail\SendPostNotification;
 
 class PostController extends Controller
 {
@@ -99,6 +102,9 @@ class PostController extends Controller
         $post->fill($form_data);
         //Con la funzione save() salviamo
         $post->save();
+
+        //Inviamo l'email di notifica all'admin
+        Mail::to('endrit.morina@outlook.it')->send(new SendPostNotification());
 
         //Controllo che l'array 'tags' ci sia e che sia effetivamente un array,
         //Se così, lo setto come tag o più tag al nuovo post

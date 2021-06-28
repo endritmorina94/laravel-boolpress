@@ -1,0 +1,20 @@
+@mixin filled-btn {
+    display: inline-block;
+    background-color: $primary_color;
+    color: $primary_text;
+    text-decoration: none;
+    padding: 10px 50px;
+    font-weight: 500;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .5);
+}
+
+@mixin empty-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: $primary_text;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 500;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .5);
+    border: 2px solid $primary_color;
+}

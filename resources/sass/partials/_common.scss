@@ -1,0 +1,17 @@
+body {
+    font-family: $primary_font;
+    background-color: #F8F7F7;
+}
+
+main {
+    position: relative;
+    bottom: 400px;
+    padding: 0;
+
+    & > .container {
+        background-color: $bg_primary;
+        border-top: 5px double $bg_secondary;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+}

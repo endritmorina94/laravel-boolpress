@@ -1,35 +1,34 @@
+.section-title {
+    padding: 40px 25px 30px;
+    margin: 0 25px;
+    position: relative;
+
+    h2 {
+        color: $bg_secondary;
+        width: max-content;
+        margin: 0 auto 8px;
+        background-color: $bg_primary;
+        font-family: $secondary_font;
+        font-size: 3rem;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+        }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 73px;
+        border-bottom: 1px dashed $bg_secondary;
+        height: 1px;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
 .home-page {
     text-align: center;
-
-    .section-title {
-        padding: 40px 25px 30px;
-        margin: 0 25px;
-        position: relative;
-
-        h2 {
-            color: $bg_secondary;
-            width: max-content;
-            margin: 0 auto 8px;
-            background-color: $bg_primary;
-            font-family: $secondary_font;
-            font-size: 3rem;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-            }
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 73px;
-            border-bottom: 1px dashed $bg_secondary;
-            height: 1px;
-            width: 100%;
-            z-index: 1;
-        }
-    }
-
     .suggested-posts {
         padding: 0 25px 25px;
     }
@@ -159,65 +158,74 @@
             }
         }
     }
+}
 
-    .latest-posts {
-        padding: 0 25px;
+.latest-posts {
+    padding: 0 25px;
+    flex-wrap: wrap;
 
-        .post {
-            width: calc(100% / 3 - 25px);
-            height: 300px;
-            background: white;
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, .1);
+    .post {
+        width: calc(100% / 3 - 25px);
+        height: 300px;
+        background: white;
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, .1);
+        margin-bottom: 25px;
 
-            .image-container {
-                height: 180px;
-                position: relative;
-
-                &::before {
-                    position: absolute;
-                    content: "";
-                    top: 5px;
-                    left: 5px;
-                    width: calc(100% - 10px);
-                    height: calc(100% - 10px);
-                    border: 1px dashed $secondary_color;
-                    border-radius: 3px;
-                    opacity: .8;
-                    z-index: 2;
-                    transition: all .5s;
-                }
-            }
+        .image-container {
+            height: 180px;
+            position: relative;
 
             &::before {
-                border: 0;
+                position: absolute;
+                content: "";
+                top: 5px;
+                left: 5px;
+                width: calc(100% - 10px);
+                height: calc(100% - 10px);
+                border: 1px dashed $secondary_color;
+                border-radius: 3px;
+                opacity: .8;
+                z-index: 2;
+                transition: all .5s;
             }
 
-            &:hover .image-container::before {
-                transform: scale(1.01);
-                opacity: .5;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &::before {
+            border: 0;
+        }
+
+        &:hover .image-container::before {
+            transform: scale(1.01);
+            opacity: .5;
+        }
+
+        .recipe-description {
+            padding: 10px 20px 0;
+
+            h5 {
+            color: $bg_secondary;
+            font-size: 500;
             }
 
-            .recipe-description {
-                padding-top: 10px;
-
-                h5 {
-                color: $bg_secondary;
-                font-size: 500;
-                }
-
-                p {
-                    color: $muted-text;
-                    font-weight: 300;
-                    height: 78px;
-                    margin-bottom: 0;
-                    overflow-y: auto;
-                }
+            p {
+                color: $muted-text;
+                font-weight: 300;
+                height: 78px;
+                margin-bottom: 0;
+                overflow-y: auto;
             }
         }
     }
 }
 
 .parallax {
+    width: 100%;
     margin: 75px 0 0;
     background-image: url("/img/parallax.jpg");
     background-attachment: fixed;
@@ -235,6 +243,7 @@
             font-family: $secondary_font;
             font-size: 3rem;
             padding: 0 20px;
+            background-color: transparent;
             }
 
         &::before {
@@ -268,12 +277,12 @@
         .category {
             display: inline-block;
             width: calc(100% / 2 - 20px);
-            height: 350px;
+            height: 240px;
             background: rgba($bg_secondary, .5);
             position: relative;
             overflow: hidden;
             margin-bottom: 40px;
-            padding: 20px;
+            padding: 20px 30px;
             transition: all .5s;
 
             &::before {
@@ -283,23 +292,22 @@
                 left: 7px;
                 width: calc(100% - 14px);
                 height: calc(100% - 14px);
-                border: 2px dashed rgba($secondary_color, .5);
+                border: 2px dashed rgba($bg_secondary, .5);
                 border-radius: 3px;
                 z-index: 1;
             }
 
-
             &:hover {
-                transform: scale(1.01);
+                transform: scale(1.005);
                 background: rgba($bg_secondary, .9);
             }
 
             img {
-                width: 75%;
+                width: 130%;
                 filter: drop-shadow(2px 5px 7px rgba(0, 0, 0, .5));
                 position: absolute;
-                bottom: 20px;
-                right: 20px;
+                bottom: -110px;
+                right: -75px;
             }
 
             h3 {
@@ -307,11 +315,15 @@
                 font-size: 3.5rem;
                 font-weight: 800;
                 text-transform: uppercase;
-                text-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+                text-shadow: 0 2px 4px rgba($bg_secondary, .5);
                 position: relative;
                 z-index: 1;
+                transition: color .5s;
+            }
+
+            &:hover h2 {
+                color: $primary_color;
             }
         }
-
     }
 }

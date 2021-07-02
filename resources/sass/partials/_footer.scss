@@ -1,7 +1,10 @@
 footer {
+    padding: 100px 0 80px;
+    background: $bg_secondary;
+
     .container {
         display: flex;
-        padding: 0 40px;
+        padding: 0 50px;
 
         .logo {
             position: relative;
@@ -10,7 +13,7 @@ footer {
 
             h3 {
                 font-weight: 800;
-                color: $bg_secondary;
+                color: $secondary_color;
                 text-shadow: 0 2px 2px rgba(0, 0, 0, .2);
                 position: relative;
 
@@ -25,6 +28,7 @@ footer {
                 top: -21px;
                 left: 55px;
                 z-index: 0;
+                filter: invert(1) drop-shadow(0 0 1px rgba(255, 255, 255, 1));
             }
 
             &:hover {
@@ -33,6 +37,8 @@ footer {
         }
 
         p {
+            margin: 0;
+            color: $secondary_color;
 
             .footer-link {
                 color: $primary_color;
@@ -40,6 +46,4 @@ footer {
             }
         }
     }
-
-
 }

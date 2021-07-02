@@ -6,6 +6,7 @@
     </head>
     <body>
         <h1>Ciao, c'è un nuovo post</h1>
+        <h2>{{ $post_data->title }}</h2>
 
     </body>
 </html>

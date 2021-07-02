@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.cms-layout')
 
 @section('page_title', "Home")
 
-@section('content')
+@section('guest-view')
+    @include('guest.home')
+@endsection
+
+{{-- @section('content')
     <div class="container">
         <h1>Ciao sono la home admin</h1>
 
@@ -16,4 +20,4 @@
             @endforeach
         </div>
     </div>
-@endsection
+@endsection --}}

@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.cms-layout')
 
 @section('page_title', "Blog")
 
-@section('content')
+
+@section('guest-view')
+    @include('guest.posts.index')
+@endsection
+{{-- @section('content')
     <div class="container">
         <h1>Ciao sono l'index pubblica dei post</h1>
 
@@ -42,11 +46,11 @@
             </a>
 
             {{-- Delete Element Form --}}
-            <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
+            {{-- <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger" value="Elimina">
             </form>
         @endforeach
-    </div>
-@endsection
+    </div> --}}
+{{-- @endsection  --}}

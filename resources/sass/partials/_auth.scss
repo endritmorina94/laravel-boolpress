@@ -1,0 +1,53 @@
+.auth-header {
+    background-color: $secondary_color;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    font-family: $cms_font;
+
+    .auth-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+
+        a {
+            font-size: 1.2rem;
+            color: $muted-text;
+            text-decoration: none;
+
+            &:hover,
+            &.active {
+                color: #007BFF;
+            }
+        }
+
+        .right-side a {
+            margin-left: 20px;
+        }
+    }
+}
+
+
+.auth-content main {
+    height: calc(100vh - 64px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $cms_font;
+
+    .logo {
+        font-family: $authlogo-font;
+        display: flex;
+        justify-content: center;
+        color: #5d5d5d;
+        margin-bottom: 30px;
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+
+            span {
+                color: #328caf;
+            }
+        }
+    }
+}

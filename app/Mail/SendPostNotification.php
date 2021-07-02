@@ -11,14 +11,18 @@ class SendPostNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    //Dichiaro una nuova variabile dell'oggetto
+    protected $post_data;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    //Tramite la funzione construct passo le informazioni del post
+    public function __construct($_post_data)
     {
-        //
+        $this->post_data = $_post_data;
     }
 
     /**
@@ -28,6 +32,10 @@ class SendPostNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.new-post');
+        $data = [
+            'post_data' => $this->post_data
+        ];
+
+        return $this->view('mails.new-post', $data);
     }
 }

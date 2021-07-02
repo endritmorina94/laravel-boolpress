@@ -3,15 +3,26 @@ body {
     background-color: #F8F7F7;
 }
 
-main {
-    position: relative;
-    bottom: 400px;
+.page-content {
+    width: 100%;
+    position: absolute;
+    top: 350px;
     padding: 0;
 
-    & > .container {
+    & main > .container {
         background-color: $bg_primary;
         border-top: 5px double $bg_secondary;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
+        padding-bottom: 40px ;
+        border-bottom: 5px double $bg_secondary;
+        margin-bottom: 40px;
+        border-radius: 6px;
+        box-shadow: 0 0 5px rgba($bg_secondary, .2)
     }
+}
+
+.my_btn {
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .4);
 }

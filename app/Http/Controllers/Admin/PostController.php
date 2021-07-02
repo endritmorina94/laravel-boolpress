@@ -103,8 +103,8 @@ class PostController extends Controller
         //Con la funzione save() salviamo
         $post->save();
 
-        //Inviamo l'email di notifica all'admin
-        Mail::to('endrit.morina@outlook.it')->send(new SendPostNotification());
+        //Inviamo l'email di notifica all'admin passando le informazioni del post alla mail
+        Mail::to('endrit.morina@outlook.it')->send(new SendPostNotification($post));
 
         //Controllo che l'array 'tags' ci sia e che sia effetivamente un array,
         //Se così, lo setto come tag o più tag al nuovo post

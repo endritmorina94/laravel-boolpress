@@ -32,12 +32,15 @@
 
         @include('partials.header')
 
-        <main>
-            @yield('content')
-        </main>
-    </div>
+        <div class="page-content">
+            <main>
+                @yield('content')
+            </main>
 
-    @include('partials.footer')
+            @include('partials.footer')
+        </div>
+
+    </div>
 
     @yield('footer-script')
 </body>

@@ -78,6 +78,16 @@
                 <input type="file" class="form-control-file" id="img_path" name="img_path">
             </div>
 
+            <div class="form-group">
+                <label for="cooking_time">Tempo di preparazione</label>
+                <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ old('cooking_time') }}">
+            </div>
+
+            <div class="form-group">
+                <label for="people">Numero di porzioni</label>
+                <input type="number" class="form-control" id="people" name="people" value="{{ old('people') }}">
+            </div>
+
             <button type="submit" class="btn btn-success my_btn my-4">SALVA</button>
         </form>
         {{-- End Edit form --}}

@@ -128,10 +128,14 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $same_cat_posts = Post::where('id', 'NOT like', $id)
+        ->where('category_id', '=', $post->category_id)->limit(3)->get();
+
         $data = [
             'post' => $post,
             'category' => $post->category,
-            'tags' =>$post->tags
+            'tags' =>$post->tags,
+            'same_cat_posts' => $same_cat_posts
         ];
 
         return view('admin.posts.show', $data);

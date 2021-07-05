@@ -12,7 +12,9 @@ class Post extends Model
        'content',
        'slug',
        'category_id',
-       'img_path'
+       'img_path',
+       'cooking_time',
+       'people'
     ];
 
     //RELAZIONE TRA TABELLE (ONE TO MANY in questo caso)

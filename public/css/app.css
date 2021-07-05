@@ -11184,6 +11184,7 @@ body {
 
 #cms .post:hover .cms-overlay {
   display: flex;
+  padding-left: 5px;
 }
 
 .post-cover-img img {

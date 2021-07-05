@@ -1,7 +1,19 @@
 # Blog di ricette GialloBooleano & mini CMS BoolPress
 
-## Demo di GialloBooleano
-![Gif](public/img/giallobooleano.gif "Demo Preview")
+## Preview di Boolpress
+![img](public/img/boolpress.png "Preview")
 
-## Demo di Boolpress
-![Gif](public/img/boolpress.gif "Demo Preview")
+## Preview di GialloBooleano
+![img](public/img/full-page.png "Preview")
+
+## CMS Boolpress Login
+![img](public/img/login.png "Preview")
+
+## CMS Boolpress CRUD
+![img](public/img/new-post.png "Preview")
+
+## CMS Boolpress CRUD
+![img](public/img/modify-post.png "Preview")
+
+## GialloBooleano Single Item
+![img](public/img/show-example.png "Preview")

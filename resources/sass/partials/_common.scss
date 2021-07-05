@@ -9,14 +9,15 @@ body {
     top: 350px;
     padding: 0;
 
-    & main > .container {
+    & main > .container,
+    & main #root > .container {
         background-color: $bg_primary;
         border-top: 5px double $bg_secondary;
-        padding-bottom: 40px ;
         border-bottom: 5px double $bg_secondary;
+        padding: 0 40px 15px;
         margin-bottom: 40px;
         border-radius: 6px;
-        box-shadow: 0 0 5px rgba($bg_secondary, .2)
+        box-shadow: 0 0 5px rgba($bg_secondary, .2);
     }
 }
 

@@ -17,6 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title', 255);
             $table->text('content');
+            $table->string('cooking_time', 255)->nullable();
+            $table->tinyInteger('people')->nullable();
+            $table->string('suggested', 3)->nullable();
             $table->string('slug', 255)->unique();
             $table->timestamps();
         });

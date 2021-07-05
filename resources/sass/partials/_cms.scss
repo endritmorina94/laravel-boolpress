@@ -5,9 +5,6 @@
         display: flex;
         justify-content: space-between;
         height: 80px;
-        box-shadow: -5px 2px 5px rgba(0, 0, 0, .3);
-        position: relative;
-        z-index: 3;
 
         a {
             display: inline-block;
@@ -20,14 +17,24 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #5d5d5d;
+                color: $cms_secondary;
                 background-color: #DCDCDC;
+                position: relative;
+                z-index: 4;
+                box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+
+                img {
+                    width: 50px;
+                    position: relative;
+                    bottom: 4px;
+                    right: 10px
+                }
 
                 h4 {
                     font-size: 2rem;
 
                     span {
-                        color: #328caf;
+                        color: $cms_primary;
                     }
                 }
             }
@@ -37,6 +44,9 @@
             flex-grow: 1;
             background-color: $secondary_color;
             color: $muted-text;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
+            position: relative;
+            z-index: 3;
 
             .nav-container {
                 height: 100%;
@@ -66,7 +76,7 @@
                     color: $muted-text;
 
                     &:hover {
-                        color: #328caf;
+                        color: $cms_primary;
                     }
                 }
             }
@@ -80,11 +90,12 @@
         .tools-list {
             width: 20%;
             background-color: #c3c2c2;
-            padding-top: 20px;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, .5);
+            position: relative;
+            z-index: 2;
 
             a {
                 color: $secondary_color;
-                text-shadow: 0 0 2px rgba(0, 0, 0, .7);
                 text-decoration: none;
 
 
@@ -92,12 +103,15 @@
                     font-size: 1.1rem;
                     color: $secondary_color;
                     padding: 20px 0 20px 35px;
-                    transition: all .4s;
+                    text-shadow: 0 0 3px rgba(0, 0, 0, .7);
+                    transition: background-color .4s;
 
                     &:hover,
                     &.active {
-                        color: #328caf;
-                        text-shadow: 0 0 1px rgba(255, 255, 255, .8);
+                        color: $cms_primary;
+                        text-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+                        box-shadow: inset 0 0 3px rgba(0, 0, 0, .35);
+                        background-color: #DCDCDC;
                     }
 
                     i {
@@ -112,6 +126,7 @@
             height: calc(100vh - 80px);
             position: relative;
             overflow-y: auto;
+            font-family: $primary_font;
         }
     }
 
@@ -128,5 +143,8 @@
     .post:hover .cms-overlay {
         display: flex;
     }
+}
 
+.post-cover-img img {
+    width: 40%;
 }

@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="section-title">
-            <h2>Recipes</h2>
+            <h2>Ricette</h2>
         </div>
         <div class="latest-posts index-blade d-flex justify-content-between">
             @foreach ($posts as $post)
@@ -41,12 +41,14 @@
                         <div class="recipe-description">
                             <a href="{{ route('blog-post', [
                                 'slug' => $post->slug
-                                ]) }}"><h5>{{ $post->title }}</h5></a>
+                                ]) }}"><h5>{{ $post->title }}</h5>
+                            </a>
                             <p>{{ $post->content }}</p>
                         </div>
                     </div>
                 </div>
             @endforeach
+
         </div>
     </div>
     {{-- <h1>Ciao sono l'index pubblica dei post</h1> --}}

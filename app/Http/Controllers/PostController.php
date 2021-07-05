@@ -29,10 +29,14 @@ class PostController extends Controller
             abort('404');
         }
 
+        $same_cat_posts = Post::where('slug', 'NOT like', $slug)
+        ->where('category_id', '=', $post->category_id)->limit(3)->get();
+
         $data = [
             'post' => $post,
             'category' => $post->category,
-            'tags' => $post->tags
+            'tags' => $post->tags,
+            'same_cat_posts' => $same_cat_posts
         ];
 
         return view('guest.posts.show', $data);

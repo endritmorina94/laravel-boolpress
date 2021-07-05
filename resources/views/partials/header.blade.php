@@ -12,7 +12,6 @@
                             <h1>
                                 <span>Giallo</span>Booleano
                             </h1>
-                            <img src="{{ asset('img/chef-hat.png') }}" alt="Logo">
                         </a>
 
                             {{-- <a class="nav-link {{ Request::route()->getName() == 'home' ? 'active' : '' }}"

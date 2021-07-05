@@ -14,9 +14,35 @@
     .post-container {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 40px;
 
         .img-container {
-            width: 40%;
+            width: calc(50% - 40px);
+            margin-right: 40px;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 5px;
+                left: 5px;
+                width: calc(100% - 10px);
+                height: calc(100% - 10px);
+                border: 1px dashed $secondary_color;
+                border-radius: 3px;
+                opacity: .8;
+                z-index: 2;
+                transition: all .5s;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .post-content {
+            width: 50%;
         }
     }
 }

@@ -1,6 +1,5 @@
 .section-title {
     padding: 40px 25px 30px;
-    margin: 0 25px;
     position: relative;
 
     h2 {
@@ -29,8 +28,9 @@
 
 .home-page {
     text-align: center;
+
     .suggested-posts {
-        padding: 0 25px 25px;
+        padding: 0 0 25px;
     }
 
     .post {
@@ -68,7 +68,6 @@
             top: 20px;
             left: -7px;
             z-index: 2;
-            color: $secondary_color;
             padding: 0 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
             font-size: 1.25rem;
@@ -96,6 +95,11 @@
                 border-style: solid;
                 border-width: 15px 0 15px 11px;
                 border-color: transparent transparent transparent $primary_color;
+            }
+
+            a {
+                text-decoration: none;
+                color: $secondary_color;
             }
         }
 
@@ -139,21 +143,35 @@
             .recipe-description {
                 height: 100%;
                 text-align: left;
-                padding: 0 20px 10px;
+                padding: 0 14px 10px;
                 position: relative;
                 z-index: 2;
 
-                h5 {
-                    color: $primary_color;
-                    margin-bottom: 0;
-                    padding: 5px 0 0;
+                a {
+                    text-decoration: none;
+
+                    h5 {
+                        color: $primary_color;
+                        margin-bottom: 0;
+                        padding: 5px 0 0;
+
+                        &:hover {
+                            text-decoration: underline;
+                            text-decoration-color: $primary_color;
+                        }
+                    }
                 }
 
                 p {
                     font-weight: 300;
-                    height: 100px;
+                    height: 104px;
                     margin-bottom: 0;
                     overflow-y: auto;
+                    scrollbar-width: none;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
                 }
             }
         }
@@ -161,7 +179,6 @@
 }
 
 .latest-posts {
-    padding: 0 25px;
     flex-wrap: wrap;
 
     .post {
@@ -205,12 +222,21 @@
             opacity: .5;
         }
 
-        .recipe-description {
+        .recipe-content .recipe-description {
             padding: 10px 20px 0;
 
-            h5 {
-            color: $bg_secondary;
-            font-size: 500;
+            a {
+                text-decoration: none;
+
+                h5 {
+                    color: $bg_secondary;
+                    margin: 0;
+
+                    &:hover {
+                        text-decoration: underline;
+                        text-decoration-color: $primary_color;
+                    }
+                }
             }
 
             p {
@@ -219,6 +245,11 @@
                 height: 78px;
                 margin-bottom: 0;
                 overflow-y: auto;
+                scrollbar-width: none;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
             }
         }
     }
@@ -274,55 +305,61 @@
         justify-content: space-between;
         flex-wrap: wrap;
 
-        .category {
-            display: inline-block;
+        a {
             width: calc(100% / 2 - 20px);
-            height: 240px;
-            background: rgba($bg_secondary, .5);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-            padding: 20px 30px;
-            transition: all .5s;
 
-            &::before {
-                content: "";
-                position: absolute;
-                top: 7px;
-                left: 7px;
-                width: calc(100% - 14px);
-                height: calc(100% - 14px);
-                border: 2px dashed rgba($bg_secondary, .5);
-                border-radius: 3px;
-                z-index: 1;
-            }
 
-            &:hover {
-                transform: scale(1.005);
-                background: rgba($bg_secondary, .9);
-            }
-
-            img {
-                width: 130%;
-                filter: drop-shadow(2px 5px 7px rgba(0, 0, 0, .5));
-                position: absolute;
-                bottom: -110px;
-                right: -75px;
-            }
-
-            h3 {
-                color: $secondary_color;
-                font-size: 3.5rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                text-shadow: 0 2px 4px rgba($bg_secondary, .5);
+            .category {
+                display: inline-block;
+                width: 100%;
+                height: 240px;
+                background: rgba($bg_secondary, .5);
                 position: relative;
-                z-index: 1;
-                transition: color .5s;
-            }
+                overflow: hidden;
+                margin-bottom: 40px;
+                padding: 20px 30px;
+                transition: all .5s;
 
-            &:hover h2 {
-                color: $primary_color;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 7px;
+                    left: 7px;
+                    width: calc(100% - 14px);
+                    height: calc(100% - 14px);
+                    border: 2px dashed rgba($bg_secondary, .5);
+                    border-radius: 3px;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    transform: scale(1.005);
+                    background: rgba($bg_secondary, .9);
+                }
+
+                img {
+                    width: 130%;
+                    filter: drop-shadow(2px 5px 7px rgba(0, 0, 0, .5));
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                h3 {
+                    color: $secondary_color;
+                    font-size: 3.5rem;
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    text-shadow: 0 2px 4px rgba($bg_secondary, .5);
+                    position: relative;
+                    z-index: 1;
+                    transition: color .5s;
+                }
+
+                &:hover h2 {
+                    color: $primary_color;
+                }
             }
         }
     }

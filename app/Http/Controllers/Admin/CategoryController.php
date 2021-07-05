@@ -8,18 +8,16 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-    public function show($slug)
+    public function index()
     {
-        $category = Category::where('slug', '=', $slug)->first();
+        $categories = Category::all();
 
-        if(!$category){
+        if(!$categories){
             abort('404');
         }
 
         $data = [
-            'category' => $category,
-            //Aggiungo ai data i post appartenenti alla suddetta categoria
-            'posts' => $category->posts
+            'categories' => $categories,
         ];
 
         return view('admin.categories.show', $data);

@@ -27,6 +27,7 @@
             <header class="cms-header">
                 <a href="{{ route('admin.home') }}">
                     <div class="logo">
+                        <img src="{{ asset("img/boolpress-logo.png") }}" alt="">
                         <h4><span>Bool</span>Press</h4>
                     </div>
                 </a>
@@ -41,7 +42,7 @@
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right my-dropdown" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -71,7 +72,7 @@
                             Modifica un post
                         </div>
                     </a>
-                    <a href="">
+                    <a href="{{ route('admin.category-page') }}">
                         <div class="tool">
                             <i class="fas fa-copy"></i>
                             Categorie

@@ -2,7 +2,7 @@ var app = new Vue(
     {
         el: '#root',
         data: {
-            title: 'Ciao sono Vue',
+            title: 'I seguenti post provengono dalla API',
             posts: []
         },
         methods: {
@@ -13,6 +13,7 @@ var app = new Vue(
                 .then((response) => {
                     //Metto nell'array posts tutti i dati che mi risultano dalla chiamata API
                     this.posts = response.data;
+                    console.log(this.posts);
                 });
         }
     }

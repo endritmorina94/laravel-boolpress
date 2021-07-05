@@ -1,4 +1,39 @@
-footer {
+.footer-top {
+    background-color: darken($bg_primary, 5%);
+
+    .socials {
+        list-style-type: none;
+        display: flex;
+        margin: 0;
+
+        li {
+            width: calc(100% / 5);
+            padding: 30px 20px;
+
+            a {
+                color: #494949;
+                font-weight: 500;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                transition: all .4s;
+
+                i {
+                    font-size: 1.4rem;
+                    margin-right: 15px;
+                }
+            }
+
+            &:hover a {
+                cursor: pointer;
+                color: $primary_color;
+            }
+        }
+    }
+}
+
+.footer-bottom {
     padding: 100px 0 80px;
     background: $bg_secondary;
 
@@ -20,15 +55,6 @@ footer {
                 span {
                     color: $primary_color;
                 }
-            }
-
-            img {
-                position: absolute;
-                width: 47px;
-                top: -21px;
-                left: 55px;
-                z-index: 0;
-                filter: invert(1) drop-shadow(0 0 1px rgba(255, 255, 255, 1));
             }
 
             &:hover {

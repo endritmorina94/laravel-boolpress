@@ -4,11 +4,13 @@
 
 @section('content')
     <div class="container post-details-guest">
-        <h2>{{ $post->title }}</h2>
+        <div class="section-title">
+            <h2>{{ $post->title }}</h2>
+        </div>
         <div class="post-container">
             <div class="img-container">
                 @if ($post->img_path)
-                    <img src="{{ asset('storage/' .$post->img_path) }}" alt="{{$post->title}}">
+                    <img class="rounded" src="{{ asset('storage/' .$post->img_path) }}" alt="{{$post->title}}">
                 @endif
             </div>
             <div class="post-content">
@@ -27,6 +29,20 @@
 
                 @if ($category)
                     <div class="">
+                        <b>Tempo di preparazione: </b>
+                        {{$post->cooking_time}}
+                    </div>
+                @endif
+
+                @if ($category)
+                    <div class="">
+                        <b>Dosi per: </b>
+                        {{$post->people}} Persone
+                    </div>
+                @endif
+
+                @if ($category)
+                    <div class="">
                         <b>Categoria: </b>
                         <a href="{{ route('category-page', ['slug' =>$category->slug])}}">
                             {{$category->name}}
@@ -35,6 +51,30 @@
                 @endif
             </div>
         </div>
+
+        {{-- From Same Category Start --}}
+        <div class="section-title">
+            <h2>Della stessa Categoria</h2>
+        </div>
+        <div class="latest-posts d-flex justify-content-between">
+            @foreach ($same_cat_posts as $post)
+                <div class="post">
+                    <div class="image-container">
+                        <img src="{{ asset('storage/' . $post->img_path) }}" alt="{{ $post->title }}">
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-description">
+                            <a href="{{ route('blog-post', [
+                                'slug' => $post->slug
+                                ]) }}"><h5>{{ $post->title }}</h5>
+                            </a>
+                            <p>{{substr($post->content, 0, 121)}}..</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        {{-- From Same Category End --}}
 
         {{-- @if ($tags->isNotEmpty())
             <div class="mt-2">

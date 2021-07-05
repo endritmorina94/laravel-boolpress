@@ -68,9 +68,9 @@
                 @endforeach
             </div>
 
-            <div class="">
+            <div class="post-cover-img">
                 <h3>Immagine di copertina</h3>
-                <img src="{{ asset('storage/' . $post->img_path) }}" alt="{{ $post->title }}">
+                <img class="rounded" src="{{ asset('storage/' . $post->img_path) }}" alt="{{ $post->title }}">
             </div>
 
             <div class="form-group">
@@ -78,7 +78,7 @@
                 <input type="file" class="form-control-file" id="img_path" name="img_path">
             </div>
 
-            <button type="submit" class="btn btn-success my_btn">SALVA</button>
+            <button type="submit" class="btn btn-success my_btn my-4">SALVA</button>
         </form>
         {{-- End Edit form --}}
     </div>

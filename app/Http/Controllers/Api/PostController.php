@@ -20,8 +20,10 @@ class PostController extends Controller
         foreach ($posts as $post) {
             $posts_result[] = [
                 'id' => $post->id,
+                'slug' => $post->slug,
                 'title' => $post->title,
                 'content' => $post->content,
+                'img_path' => $post->img_path,
                 'category' => $post->category ? $post->category->name : '',
                 'tags' => $post->tags->toArray()
             ];

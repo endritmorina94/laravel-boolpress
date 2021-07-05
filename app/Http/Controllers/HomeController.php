@@ -27,11 +27,13 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $posts = Post::all();
+        $suggested_posts = Post::where('suggested', 'like', 'yes')->get();
+        $last_posts = Post::where('suggested', 'NOT like', 'yes')->orderByDesc('created_at')->limit(3)->get();
 
         $data = [
             'categories' => $categories,
-            'posts' => $posts
+            'suggested_posts' => $suggested_posts,
+            'last_posts' => $last_posts
         ];
 
         return view('guest.home', $data);

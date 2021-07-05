@@ -62,7 +62,7 @@
                 <input type="file" class="form-control-file" id="img_path" name="img_path">
             </div>
 
-            <button type="submit" class="btn btn-primary my_btn">CREA</button>
+            <button type="submit" class="btn btn-primary my_btn my-4">CREA</button>
         </form>
         {{-- End Create form --}}
     </div>

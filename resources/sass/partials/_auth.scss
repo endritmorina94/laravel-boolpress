@@ -38,15 +38,22 @@
         font-family: $authlogo-font;
         display: flex;
         justify-content: center;
-        color: #5d5d5d;
+        align-items: center;
+        flex-direction: column;
+        color: $cms_secondary;
         margin-bottom: 30px;
+
+        img {
+            width: 120px;
+        }
+
 
         h1 {
             font-size: 3.5rem;
             font-weight: 600;
 
             span {
-                color: #328caf;
+                color: $cms_primary;
             }
         }
     }

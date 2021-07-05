@@ -40,7 +40,7 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
-        Route::get('/category/{slug}', 'CategoryController@show')->name('category-page');
+        Route::get('/category/', 'CategoryController@index')->name('category-page');
 
         Route::resource('/posts', 'PostController');
 });

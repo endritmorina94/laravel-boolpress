@@ -76,26 +76,4 @@
         </div>
         {{-- From Same Category End --}}
 
-        {{-- @if ($tags->isNotEmpty())
-            <div class="mt-2">
-                <b>TAG: </b>
-                @foreach ($post->tags as $tag)
-                    <a href="{{ route('tag-page', ['slug' =>$tag->slug])}}">
-                        {{ $tag->name }}{{ $loop->last ? '' : ',' }}
-                    </a>
-                @endforeach
-            </div>
-        @endif
-
-        @if ($category)
-            <div class="">
-                <b>Categoria: </b>
-                <a href="{{ route('category-page', ['slug' =>$category->slug])}}">
-                    {{$category->name}}
-                </a>
-            </div>
-        @endif
-
-        <p>{{ $post->content }}</p>
-    </div> --}}
 @endsection

@@ -65,17 +65,7 @@
         </div>
     </div>
 
-
-
-
-        {{-- <div class="mt-3">
-            @foreach ($categories as $category)
-                <a href="{{ route('category-page', ['slug' => $category->slug])}}">
-                    <h3>{{ $category->name }}</h3>
-                </a>
-            @endforeach
-        </div> --}}
-
+    {{-- Categories Start --}}
     <section class="parallax container-fluid">
         <div class="container">
             <div class="section-title">
@@ -94,4 +84,5 @@
             </div>
         </div>
     </section>
+    {{-- Categories End --}}
 @endsection

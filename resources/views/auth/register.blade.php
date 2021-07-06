@@ -5,6 +5,7 @@
 @section('content')
 <div class="container">
     <div class="logo">
+        <img src="{{ asset("img/boolpress-logo.png") }}" alt="">
         <h1><span>Bool</span>Press</h1>
     </div>
     <div class="row justify-content-center">
